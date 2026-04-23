@@ -25,7 +25,19 @@ jobs:
       run: |
         pip install buildozer cython
 
+    - name: Setup Android SDK
+      run: |
+        export ANDROID_HOME=/usr/local/lib/android/sdk
+        export ANDROID_SDK_ROOT=/usr/local/lib/android/sdk
+        # 接受许可
+        yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+        # 安装必需的平台和构建工具
+        $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-31" "build-tools;33.0.0"
+
     - name: Build APK
+      env:
+        ANDROID_HOME: /usr/local/lib/android/sdk
+        ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
       run: |
         buildozer android debug
 

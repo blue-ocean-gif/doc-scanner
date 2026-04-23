@@ -18,3 +18,6 @@ android.enable_androidx = True
 android.permissions = CAMERA, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 android.numeric_version = 1
 p4a.python_version = 3.10
+
+android.sdk_path = /usr/local/lib/android/sdk
+android.p4a_branch = release-2024.01.21
